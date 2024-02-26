@@ -1,4 +1,5 @@
 import data_retriever
+import opensearch_connect
 import time
 
 
@@ -16,8 +17,17 @@ import time
 
 if __name__ == '__main__':
     while True:
-        print(data_retriever.retrieve_memory_information())
-        print(data_retriever.retrieve_cpu_information())
-        print(data_retriever.retrieve_disk_information('/'))
-        print()
-        time.sleep(3)
+        # print(data_retriever.retrieve_memory_information())
+        # print((data_retriever.retrieve_cpu_information()))
+        #print(data_retriever.retrieve_disk_information('/'))
+        #print()
+        # time.sleep(3)
+        #
+        # opensearch_connect.opensearch_add_data(document=data_retriever.retrieve_memory_information())
+        opensearch_connect.opensearch_add_data(document=data_retriever.retrieve_cpu_information())
+        # opensearch_connect.opensearch_add_data(document=data_retriever.retrieve_disk_information('/'))
+        print("*"*100)
+        opensearch_connect.opensearch_search()
+        print("*"*100)
+        time.sleep(1)
+

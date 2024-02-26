@@ -1,4 +1,5 @@
 import psutil
+import json
 
 
 def convert_byte_to_megabyte(int):
@@ -29,10 +30,10 @@ def retrieve_cpu_information():
 
     global_cpu_utilization_percentage = psutil.cpu_percent()
     percpu_utilization_percentage = psutil.cpu_percent(percpu=True)
-    return {
+    return json.dumps({
         'global_cpu_utilization_percentage': global_cpu_utilization_percentage,
         'percpu_utilization_percentage': percpu_utilization_percentage
-    }
+    })
 
 def retrieve_disk_information(path):
     raw_disk_data = psutil.disk_usage(path=path)

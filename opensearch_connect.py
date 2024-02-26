@@ -33,26 +33,22 @@ index_body = {
 #     print(exceptions.RequestError(400))
 
 
-document = {
-  'title': 'MEMORY INFORMATION',
-  'TOTAL_MEMORY': '17G'
-}
+# document = {
+#   'title': 'MEMORY INFORMATION',
+#   'TOTAL_MEMORY': '17G'
+# }
 id = '5'
 
-response = client.index(index=index_name, body=document, id=id, refresh=True)
 
-print('\nAdding document:')
-print(response)
-
-
-
-
-
+def opensearch_add_data(document):
+    response = client.index(body=document, index=index_name, id=id, refresh=True)
+    print('\nAdding document:')
+    print(response)
 
 
 
 # Search for the document.
-q = 'MEMORY'
+q = 'memory'
 query = {
   'size': 5,
   'query': {
@@ -63,11 +59,10 @@ query = {
   }
 }
 
-response = client.search(
-    body = query,
-    index = index_name
-)
-print('\nSearch results:')
-print(response)
+
+def opensearch_search():
+    response = client.search(body=query, index=index_name)
+    print('\nSearch results:')
+    print(response)
 
 
