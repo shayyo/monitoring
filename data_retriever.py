@@ -15,7 +15,7 @@ def retrieve_memory_information():
     physical_memory_active = convert_byte_to_megabyte(memory_raw_data.active)
     physical_memory_inactive = convert_byte_to_megabyte(memory_raw_data.inactive)
     physical_memory_wired = convert_byte_to_megabyte(memory_raw_data.wired)
-    return {
+    return json.dumps({
         'total_physical_memory': total_physical_memory,
         'available_physical_memory': available_physical_memory,
         'memory_usage_percentage': memory_usage_percentage,
@@ -23,7 +23,7 @@ def retrieve_memory_information():
         'physical_memory_active': physical_memory_active,
         'physical_memory_inactive': physical_memory_inactive,
         'physical_memory_wired': physical_memory_wired
-    }
+    })
 
 
 def retrieve_cpu_information():
@@ -41,11 +41,11 @@ def retrieve_disk_information(path):
     used_disk_size = convert_byte_to_megabyte(raw_disk_data.used)
     free_disk_size = convert_byte_to_megabyte(raw_disk_data.free)
     percentage_used_disk_size = convert_byte_to_megabyte(raw_disk_data.percent)
-    return {
+    return json.dumps({
         'total_disk_size': total_disk_size,
         'used_disk_size': used_disk_size,
         'free_disk_size': free_disk_size,
         'percentage_used_disk_size': percentage_used_disk_size
-    }
+    })
 
 

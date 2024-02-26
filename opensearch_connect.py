@@ -17,34 +17,46 @@ client = OpenSearch(
 )
 
 
-index_name = 'python-own-backup'
-index_body = {
-  'settings': {
-    'index': {
-      'number_of_shards': 4
-    }
-  }
-}
+# index_name = 'python-own-backup'
+# index_body = {
+#   'settings': {
+#     'index': {
+#       'number_of_shards': 4
+#     }
+#   }
+# }
 #
 # try:
 #     response = client.indices.create(index_name, body=index_body)
 #     print(response)
 # except:
-#     print(exceptions.RequestError(400))
+#     print("Exception...")
+#     exceptions.RequestError
 
 
 # document = {
 #   'title': 'MEMORY INFORMATION',
 #   'TOTAL_MEMORY': '17G'
 # }
-id = '5'
+# id = '5'
 
 
-def opensearch_add_data(document):
+def opensearch_index_data(document, index_name):
     response = client.index(body=document, index=index_name, id=id, refresh=True)
     print('\nAdding document:')
     print(response)
 
+
+def opensearch_add_data(index_name, document, id):
+    response = client.create(index=index_name, body=document, id=id, refresh=True)
+    print('\nAdding document:')
+    return response
+
+
+def opensearch_count_documents(index_name, document):
+    response = client.count(index=index_name, body=document)
+    print('\nCount of documents:')
+    print( response)
 
 
 # Search for the document.
@@ -60,9 +72,8 @@ query = {
 }
 
 
-def opensearch_search():
-    response = client.search(body=query, index=index_name)
-    print('\nSearch results:')
-    print(response)
+def opensearch_search(index_name, query):
+    response = client.search(index=index_name, body=query)
+    return response
 
 
