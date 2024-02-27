@@ -21,6 +21,8 @@ Follow these steps to set up the project:
 5. Install required dependencies:
     pip install -r requirements.txt
 
+6. Set your username and password in file 'opensearch_connect.py'
+
 ## Usage
 python3 main.py
 
