@@ -11,7 +11,6 @@ def retrieve_memory_data():
     physical_memory_used = memory_raw_data.used
     physical_memory_active = memory_raw_data.active
     physical_memory_inactive = memory_raw_data.inactive
-    physical_memory_wired = memory_raw_data.wired
     return json.dumps({
         'memory_data': {
         'total_physical_memory': total_physical_memory,
@@ -19,8 +18,7 @@ def retrieve_memory_data():
         'memory_usage_percentage': memory_usage_percentage,
         'physical_memory_used': physical_memory_used,
         'physical_memory_active': physical_memory_active,
-        'physical_memory_inactive': physical_memory_inactive,
-        'physical_memory_wired': physical_memory_wired
+        'physical_memory_inactive': physical_memory_inactive
     }})
 
 

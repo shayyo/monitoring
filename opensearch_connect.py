@@ -2,7 +2,7 @@ from opensearchpy import OpenSearch, exceptions
 
 host = '127.0.0.1'
 port = 9200
-auth = ('admin', 'hG8Fndffr121234')
+auth = ('admin', 'fakepassword')
 
 
 # Create the client with SSL/TLS and hostname verification disabled.
